@@ -1,45 +1,57 @@
-# Lab 03 – Understanding Network Switches
+# Lab 04 – Routing Between Two Networks
 
 ## Objective
 
-Learn how a network switch forwards traffic by examining its MAC Address Table.
+Configure a Cisco router to allow communication between two different IPv4 networks.
 
 ## Devices Used
 
 | Device | Quantity |
 |---------|---------:|
 | PC | 2 |
-| Cisco 2960-24TT Switch | 1 |
-| Copper Straight-Through Cable | 2 |
+| Cisco 2960 Switch | 2 |
+| Cisco 2911 Router | 1 |
 
-## IP Configuration
+## Network Topology
 
-| Device | IP Address | Subnet Mask |
-|---------|------------|-------------|
-| PC0 | 192.168.1.10 | 255.255.255.0 |
-| PC1 | 192.168.1.20 | 255.255.255.0 |
+![Topology](screenshots/topology.png)
+
+## IP Addressing
+
+| Device | IP Address | Default Gateway |
+|---------|------------|-----------------|
+| PC0 | 192.168.1.10 | 192.168.1.1 |
+| PC1 | 192.168.2.20 | 192.168.2.1 |
+
+## Router Configuration
+
+Configured:
+
+- GigabitEthernet0/0 → 192.168.1.1/24
+- GigabitEthernet0/1 → 192.168.2.1/24
+
+![Router CLI](screenshots/router-cli.png)
 
 ## Verification
 
-Successfully pinged PC1 from PC0.
+Successfully pinged PC1 from PC0 through the router.
 
-## MAC Address Table
-
-![MAC Address Table](screenshots/mac-address-table.png)
+![Ping Result](screenshots/successful-router-ping.png)
 
 ## Skills Learned
 
-- Accessing the Cisco CLI
-- Using Privileged EXEC Mode
-- Viewing the MAC Address Table
-- Understanding how switches learn connected devices
+- Configuring router interfaces
+- Assigning default gateways
+- Enabling router interfaces with `no shutdown`
+- Routing traffic between different networks
 
 ## Common Mistakes
 
-- Forgetting to enter `enable` before running privileged commands.
-- Expecting the MAC table to be populated before any traffic has been sent.
-- Confusing MAC addresses with IP addresses.
+- Forgetting `no shutdown`
+- Configuring the wrong IP address
+- Entering the wrong default gateway on the PCs
+- Connecting the wrong router interface
 
 ## Cybersecurity Connection
 
-SOC analysts may use MAC address information to identify devices on a network, investigate unauthorized connections, and support incident response activities.
+Routers control traffic between networks. SOC analysts use router configurations and logs to investigate suspicious traffic, identify misconfigurations, and understand how attackers may move between network segments.
