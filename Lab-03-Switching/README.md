@@ -1,8 +1,8 @@
-# Lab 01 – Building My First LAN
+# Lab 03 – Understanding Network Switches
 
 ## Objective
 
-Build a simple Local Area Network (LAN) using two PCs and one Cisco 2960 switch. Configure static IPv4 addresses and verify connectivity using the `ping` command.
+Learn how a network switch forwards traffic by examining its MAC Address Table.
 
 ## Devices Used
 
@@ -12,35 +12,34 @@ Build a simple Local Area Network (LAN) using two PCs and one Cisco 2960 switch.
 | Cisco 2960-24TT Switch | 1 |
 | Copper Straight-Through Cable | 2 |
 
-## Network Topology
-
-![Network Topology](screenshots/topology.png)
-
-## IP Addressing
+## IP Configuration
 
 | Device | IP Address | Subnet Mask |
 |---------|------------|-------------|
 | PC0 | 192.168.1.10 | 255.255.255.0 |
 | PC1 | 192.168.1.20 | 255.255.255.0 |
 
-## Configuration Summary
-
-- Added one Cisco 2960-24TT switch.
-- Connected both PCs using Copper Straight-Through cables.
-- Assigned static IPv4 addresses.
-- Verified connectivity with the `ping` command.
-
 ## Verification
 
-![Ping Test](screenshots/ping-test.png)
+Successfully pinged PC1 from PC0.
+
+## MAC Address Table
+
+![MAC Address Table](screenshots/mac-address-table.png)
 
 ## Skills Learned
 
-- Creating a basic LAN
-- Connecting devices with Ethernet cables
-- Configuring static IPv4 addresses
-- Testing connectivity with `ping`
+- Accessing the Cisco CLI
+- Using Privileged EXEC Mode
+- Viewing the MAC Address Table
+- Understanding how switches learn connected devices
+
+## Common Mistakes
+
+- Forgetting to enter `enable` before running privileged commands.
+- Expecting the MAC table to be populated before any traffic has been sent.
+- Confusing MAC addresses with IP addresses.
 
 ## Cybersecurity Connection
 
-SOC analysts often investigate communication between devices on a local network. Understanding how hosts communicate on a LAN is an essential skill for analyzing network traffic, firewall events, and packet captures.
+SOC analysts may use MAC address information to identify devices on a network, investigate unauthorized connections, and support incident response activities.
