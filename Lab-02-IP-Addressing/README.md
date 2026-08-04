@@ -1,8 +1,8 @@
-# Lab 01 – Building My First LAN
+# Lab 02 – Understanding IP Addressing
 
 ## Objective
 
-Build a simple Local Area Network (LAN) using two PCs and one Cisco 2960 switch. Configure static IPv4 addresses and verify connectivity using the `ping` command.
+Understand how IP addresses and subnet masks affect communication between devices on a network.
 
 ## Devices Used
 
@@ -12,35 +12,47 @@ Build a simple Local Area Network (LAN) using two PCs and one Cisco 2960 switch.
 | Cisco 2960-24TT Switch | 1 |
 | Copper Straight-Through Cable | 2 |
 
-## Network Topology
+## Scenario 1 – Different Networks
 
-![Network Topology](screenshots/topology.png)
+### IP Configuration
 
-## IP Addressing
+| Device | IP Address | Subnet Mask |
+|---------|------------|-------------|
+| PC0 | 192.168.1.10 | 255.255.255.0 |
+| PC1 | 192.168.2.20 | 255.255.255.0 |
+
+### Result
+
+The ping failed because the devices were on different networks and there was no router to forward traffic.
+
+![Failed Ping](screenshots/failed-ping.png)
+
+---
+
+## Scenario 2 – Same Network
+
+### IP Configuration
 
 | Device | IP Address | Subnet Mask |
 |---------|------------|-------------|
 | PC0 | 192.168.1.10 | 255.255.255.0 |
 | PC1 | 192.168.1.20 | 255.255.255.0 |
 
-## Configuration Summary
+### Result
 
-- Added one Cisco 2960-24TT switch.
-- Connected both PCs using Copper Straight-Through cables.
-- Assigned static IPv4 addresses.
-- Verified connectivity with the `ping` command.
+The ping was successful because both devices were on the same network.
 
-## Verification
+![Successful Ping](screenshots/successful-ping.png)
 
-![Ping Test](screenshots/ping-test.png)
+---
 
 ## Skills Learned
 
-- Creating a basic LAN
-- Connecting devices with Ethernet cables
-- Configuring static IPv4 addresses
-- Testing connectivity with `ping`
+- Configuring static IPv4 addresses.
+- Understanding subnet masks.
+- Identifying devices on the same network.
+- Troubleshooting communication issues.
 
 ## Cybersecurity Connection
 
-SOC analysts often investigate communication between devices on a local network. Understanding how hosts communicate on a LAN is an essential skill for analyzing network traffic, firewall events, and packet captures.
+SOC analysts frequently investigate connectivity problems before determining whether an issue is caused by a cyberattack. Correctly identifying IP addressing problems helps reduce false alarms and speeds up incident investigation.
