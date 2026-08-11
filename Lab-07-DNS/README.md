@@ -1,45 +1,54 @@
-# Lab 03 – Understanding Network Switches
+# Lab 06 – Understanding DNS
 
 ## Objective
 
-Learn how a network switch forwards traffic by examining its MAC Address Table.
+Configure a DNS server and verify that a client can resolve a domain name to an IP address.
 
 ## Devices Used
 
 | Device | Quantity |
 |---------|---------:|
-| PC | 2 |
-| Cisco 2960-24TT Switch | 1 |
-| Copper Straight-Through Cable | 2 |
+| PC | 1 |
+| Cisco 2960 Switch | 1 |
+| Server | 1 |
 
-## IP Configuration
+## Network Topology
 
-| Device | IP Address | Subnet Mask |
-|---------|------------|-------------|
-| PC0 | 192.168.1.10 | 255.255.255.0 |
-| PC1 | 192.168.1.20 | 255.255.255.0 |
+![Topology](screenshots/topology.png)
+
+## DNS Configuration
+
+| Name | IP Address |
+|------|------------|
+| company.local | 192.168.1.100 |
+
+## Client Configuration
+
+| Setting | Value |
+|---------|-------|
+| IP Address | 192.168.1.10 |
+| DNS Server | 192.168.1.100 |
 
 ## Verification
 
-Successfully pinged PC1 from PC0.
+Successfully resolved `company.local` to `192.168.1.100`.
 
-## MAC Address Table
-
-![MAC Address Table](screenshots/mac-address-table.png)
+![DNS Ping](screenshots/dns-ping.png)
 
 ## Skills Learned
 
-- Accessing the Cisco CLI
-- Using Privileged EXEC Mode
-- Viewing the MAC Address Table
-- Understanding how switches learn connected devices
+- Configuring a DNS server
+- Creating an A Record
+- Configuring a client DNS server
+- Testing DNS resolution
 
 ## Common Mistakes
 
-- Forgetting to enter `enable` before running privileged commands.
-- Expecting the MAC table to be populated before any traffic has been sent.
-- Confusing MAC addresses with IP addresses.
+- Forgetting to enable the DNS service.
+- Typing the wrong DNS server IP on the client.
+- Entering the wrong hostname.
+- Forgetting to click **Add** after creating the DNS record.
 
 ## Cybersecurity Connection
 
-SOC analysts may use MAC address information to identify devices on a network, investigate unauthorized connections, and support incident response activities.
+DNS is frequently abused by attackers for command-and-control communication, phishing, and DNS spoofing. Monitoring DNS requests helps SOC analysts detect suspicious activity early.
