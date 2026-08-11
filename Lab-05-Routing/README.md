@@ -1,4 +1,4 @@
-# Lab 04 – Virtual Local Area Networks (VLANs)
+# Lab 05 – Virtual Local Area Networks (VLANs)
 
 ## Objective
 
