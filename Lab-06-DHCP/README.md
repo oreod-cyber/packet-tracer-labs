@@ -1,4 +1,4 @@
-# Lab 05 – Configuring DHCP
+# Lab 06 – Configuring DHCP
 
 ## Objective
 
