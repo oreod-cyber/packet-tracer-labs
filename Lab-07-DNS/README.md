@@ -1,4 +1,4 @@
-# Lab 06 – Understanding DNS
+# Lab 07 – Understanding DNS
 
 ## Objective
 

@@ -1,4 +1,4 @@
-# Lab 04 – Routing Between Two Networks
+# Lab 05 – Routing Between Two Networks
 
 ## Objective
 
