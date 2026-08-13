@@ -1,54 +1,32 @@
-# Lab 06 – Understanding DNS
+# Lab 08 – Access Control List (ACL)
 
 ## Objective
 
-Configure a DNS server and verify that a client can resolve a domain name to an IP address.
-
-## Devices Used
-
-| Device | Quantity |
-|---------|---------:|
-| PC | 1 |
-| Cisco 2960 Switch | 1 |
-| Server | 1 |
+The objective of this lab is to understand how a Standard Access Control List (ACL) can be configured on a Cisco router to control network traffic.
 
 ## Network Topology
 
-![Topology](screenshots/topology.png)
+The topology consists of:
 
-## DNS Configuration
+- 2 PCs
+- 2 Cisco 2960 switches
+- 1 Cisco 2911 router
 
-| Name | IP Address |
-|------|------------|
-| company.local | 192.168.1.100 |
+PC0 belongs to the `192.168.10.0/24` network, while PC1 belongs to the `192.168.20.0/24` network.
 
-## Client Configuration
+## IP Addressing
 
-| Setting | Value |
-|---------|-------|
-| IP Address | 192.168.1.10 |
-| DNS Server | 192.168.1.100 |
+| Device | IP Address | Default Gateway |
+|---|---|---|
+| PC0 | 192.168.10.10 | 192.168.10.1 |
+| Router G0/0 | 192.168.10.1 | N/A |
+| Router G0/1 | 192.168.20.1 | N/A |
+| PC1 | 192.168.20.10 | 192.168.20.1 |
 
-## Verification
+## ACL Configuration
 
-Successfully resolved `company.local` to `192.168.1.100`.
+A Standard ACL was created to deny traffic from PC0 while allowing other traffic.
 
-![DNS Ping](screenshots/dns-ping.png)
-
-## Skills Learned
-
-- Configuring a DNS server
-- Creating an A Record
-- Configuring a client DNS server
-- Testing DNS resolution
-
-## Common Mistakes
-
-- Forgetting to enable the DNS service.
-- Typing the wrong DNS server IP on the client.
-- Entering the wrong hostname.
-- Forgetting to click **Add** after creating the DNS record.
-
-## Cybersecurity Connection
-
-DNS is frequently abused by attackers for command-and-control communication, phishing, and DNS spoofing. Monitoring DNS requests helps SOC analysts detect suspicious activity early.
+```text
+access-list 10 deny host 192.168.10.10
+access-list 10 permit any
